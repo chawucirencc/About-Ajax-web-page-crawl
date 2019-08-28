@@ -4,10 +4,23 @@ import time
 from urllib import parse
 
 
-"""
-拉勾网站招聘信息的爬取;
-"""
+def get_page_info(url):
+    """
+    此函数可以创建一个 requests 会话用来获取 POST 请求的 cookies。
+    通过 session 会话可以将 cookies传递到下次的 get 请求当中。                 
+    """
+    session = requests.Session()
+    param = {'username': 'username', 'password': 'password'}
+    r_post = session.post(url, param=param)
+    print(r_post.cookies)
+    r_get = session.get(url)
+    print(r_get.text)
+    
+    
 def get_page_json():
+    """
+    拉勾网站招聘信息的爬取;在这个函数中，先是将cookies存入一个变量，然后将cookies变量作为参数传递到get请求中。
+    """
     agent = [
         'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50',
         'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50',
