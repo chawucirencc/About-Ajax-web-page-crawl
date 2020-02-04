@@ -117,3 +117,10 @@ def fun3(result_list):
 
 # result_list = get_page_json()
 # fun2(result_list)
+def main():
+    """需要运行的函数"""
+    pass
+
+if __name__=='__main__':
+    """程序入口"""
+    main()
